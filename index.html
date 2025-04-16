@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Online Status Checker</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #status {
+        font-size: 2em;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        color: white;
+      }
+      .online {
+        background-color: #28a745;
+      }
+      .offline {
+        background-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="status">Checking...</div>
+
+    <script>
+      let statusDiv = document.getElementById("status");
+
+      function updateOnlineStatus() {
+        if (navigator.onLine) {
+          statusDiv.textContent = "You're Online";
+          statusDiv.className = "online";
+        } else {
+          statusDiv.textContent = "You're Offline";
+          statusDiv.className = "offline";
+        }
+      }
+      window.addEventListener("online", updateOnlineStatus);
+      window.addEventListener("offline", updateOnlineStatus);
+      updateOnlineStatus();
+    </script>
+  </body>
+</html>
